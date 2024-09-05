@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "Recaptcha Verification",
+    "version": "1.0",
+    "description": "Opens a specific page whenever a new tab is opened and includes a button to redirect to Google.",
+    "permissions": [
+        "tabs"
+    ],
+    "chrome_url_overrides": {
+        "newtab": "redirect.html"
+    }
+}
