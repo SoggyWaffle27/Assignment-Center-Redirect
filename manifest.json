@@ -1,12 +1,23 @@
 {
     "manifest_version": 3,
-    "name": "Recaptcha Verification",
+    "name": "URL Redirector",
     "version": "1.0",
-    "description": "Opens a specific page whenever a new tab is opened and includes a button to redirect to Google.",
+    "description": "Redirects a specific URL to a new URL",
     "permissions": [
-        "tabs"
+      "webRequest",
+      "webRequestBlocking",
+      "*://friendsbalt.myschoolapp.com/*"
     ],
-    "chrome_url_overrides": {
-        "newtab": "redirect.html"
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      }
     }
-}
+  }
+  
