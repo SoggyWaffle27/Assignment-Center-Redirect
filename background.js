@@ -1,12 +1,17 @@
-chrome.webRequest.onBeforeRequest.addListener(
-    function(details) {
-      return {
-        redirectUrl: "https://friendsbalt.myschoolapp.com/app/student#studentmyday/assignment-center"
-      };
-    },
-    {
-      urls: ["*://friendsbalt.myschoolapp.com/lms-assignment/assignment-center/student?svcid=edu&envid=p-fb7Rgs_b3kmTdxtoxTUV1w"]
-    },
-    ["blocking"]
-  );
-  
+const redirectRules = [
+  {
+    from: "https://example.com/old-page",
+    to: "https://example.com/new-page"
+  }
+];
+
+chrome.webNavigation.onCommitted.addListener((details) => {
+  for (const rule of redirectRules) {
+    if (details.url === rule.from) {
+      chrome.scripting.executeScript({
+        target: { tabId: details.tabId },
+        func: () => window.location.replace(rule.to)
+      });
+    }
+  }
+}, { url: [{ hostContains: "example.com" }] });
