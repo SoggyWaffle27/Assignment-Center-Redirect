@@ -6,17 +6,12 @@
   "permissions": [
     "webNavigation",
     "scripting",
-    "tabs",
-    "http://*/*",
-    "https://*/*"
+    "tabs"
   ],
   "host_permissions": [
     "https://friendsbalt.myschoolapp.com/*"
   ],
   "background": {
     "service_worker": "background.js"
-  },
-  "action": {
-    "default_popup": ""
   }
 }
