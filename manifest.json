@@ -5,13 +5,18 @@
   "description": "Redirects from a specific page to another.",
   "permissions": [
     "webNavigation",
-    "scripting"
+    "scripting",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "host_permissions": [
+    "https://friendsbalt.myschoolapp.com/*"
   ],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
     "default_popup": ""
-  },
-  "icons": {}
+  }
 }
