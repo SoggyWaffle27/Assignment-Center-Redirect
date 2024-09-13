@@ -1,7 +1,7 @@
 const redirectRules = [
   {
-    from: "https://example.com/old-page",
-    to: "https://example.com/new-page"
+    from: "https://friendsbalt.myschoolapp.com/lms-assignment/assignment-center/student",
+    to: "https://friendsbalt.myschoolapp.com/app/student#studentmyday/assignment-center"
   }
 ];
 
@@ -14,4 +14,4 @@ chrome.webNavigation.onCommitted.addListener((details) => {
       });
     }
   }
-}, { url: [{ hostContains: "example.com" }] });
+}, { url: [{ hostContains: "myschoolapp.com" }] });
