@@ -1,17 +1,14 @@
-const redirectRules = [
-  {
-    from: "https://friendsbalt.myschoolapp.com/lms-assignment/assignment-center/student",
-    to: "https://friendsbalt.myschoolapp.com/app/student#studentmyday/assignment-center"
-  }
-];
+const siteA = "https://www.siteA.com/*"; // Change this to the URL you want to redirect from
+const siteB = "https://www.siteB.com"; // Change this to the URL you want to redirect to
 
-chrome.webNavigation.onCommitted.addListener((details) => {
-  for (const rule of redirectRules) {
-    if (details.url === rule.from) {
-      chrome.scripting.executeScript({
-        target: { tabId: details.tabId },
-        func: () => window.location.replace(rule.to)
-      });
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) {
+    // Check if the request URL matches Site A
+    if (details.url.match(/^https?:\/\/www\.siteA\.com/)) {
+      // Redirect to Site B
+      return { redirectUrl: siteB };
     }
-  }
-}, { url: [{ hostContains: "myschoolapp.com" }] });
+  },
+  { urls: [siteA] },
+  ["blocking"]
+);
