@@ -4,12 +4,10 @@
   "version": "1.0",
   "description": "Redirects from a specific page to another.",
   "permissions": [
-    "webNavigation",
-    "scripting",
-    "tabs"
+    "webRequest"
   ],
   "host_permissions": [
-    "https://friendsbalt.myschoolapp.com/*"
+    "*://*.google.com/*"
   ],
   "background": {
     "service_worker": "background.js"
